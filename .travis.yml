@@ -39,6 +39,48 @@ env:
     - SCHEME="SwiftSample"
       WORKSPACE="SwiftSample.xcworkspace" TEST_PATH="src/objective-c/examples/SwiftSample"
       BUILD_ONLY="true" INTEROP_SERVER="false"
+#Added power jobs
+    - SCHEME="RxLibraryUnitTests"
+      arch: ppc64le
+      WORKSPACE="Tests.xcworkspace" TEST_PATH="src/objective-c/tests" BUILD_ONLY="false"
+      INTEROP_SERVER="false"
+    - SCHEME="InteropTestsLocalSSL"
+      arch: ppc64le
+      WORKSPACE="Tests.xcworkspace" TEST_PATH="src/objective-c/tests" BUILD_ONLY="false"
+      INTEROP_SERVER="true"
+    - SCHEME="InteropTestsLocalCleartext"
+      arch: ppc64le
+      WORKSPACE="Tests.xcworkspace" TEST_PATH="src/objective-c/tests"  BUILD_ONLY="false"
+      INTEROP_SERVER="true"
+    # TODO(jcanizales): Make tests an app project (instead of library), so the following will work.
+    # - SCHEME="InteropTestsRemote"
+    #   arch: ppc64le
+    #   WORKSPACE="Tests.xcworkspace" TEST_PATH="src/objective-c/tests" BUILD_ONLY="false"
+    #   INTEROP_SERVER="true"
+    - SCHEME="HelloWorld"
+      arch: ppc64le
+      WORKSPACE="HelloWorld.xcworkspace" TEST_PATH="examples/objective-c/helloworld"
+      BUILD_ONLY="true" INTEROP_SERVER="false"
+    - SCHEME="RouteGuideClient"
+      arch: ppc64le
+      WORKSPACE="RouteGuideClient.xcworkspace" TEST_PATH="examples/objective-c/route_guide"
+      BUILD_ONLY="true" INTEROP_SERVER="false"
+    - SCHEME="AuthSample"
+      arch: ppc64le
+      WORKSPACE="AuthSample.xcworkspace" TEST_PATH="examples/objective-c/auth_sample"
+      BUILD_ONLY="true" INTEROP_SERVER="false"
+    - SCHEME="Sample"
+      arch: ppc64le
+      WORKSPACE="Sample.xcworkspace" TEST_PATH="src/objective-c/examples/Sample" BUILD_ONLY="true"
+      INTEROP_SERVER="false"
+    - SCHEME="Sample"
+      arch: ppc64le
+      WORKSPACE="Sample.xcworkspace" TEST_PATH="src/objective-c/examples/Sample" BUILD_ONLY="true"
+      INTEROP_SERVER="false" FRAMEWORKS="YES"
+    - SCHEME="SwiftSample"
+      arch: ppc64le
+      WORKSPACE="SwiftSample.xcworkspace" TEST_PATH="src/objective-c/examples/SwiftSample"
+      BUILD_ONLY="true" INTEROP_SERVER="false"
 before_install:
   # Until Travis upgrades from Cocoapods 0.39, we need to do it here.
   - pod --version
